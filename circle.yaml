@@ -1,0 +1,10 @@
+dependencies:
+  override:
+    - pip install -r requirements.txt
+    - pip install coveralls
+
+test:
+  override:
+    - coverage run --source=lib -m nose2.__main__ -v
+  post:
+    - coveralls

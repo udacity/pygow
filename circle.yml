@@ -5,6 +5,6 @@ dependencies:
 
 test:
   override:
-    - coverage run --source=lib -m nose2.__main__ -v
+    - coverage run --source=pygow -m nose2.__main__ -v
   post:
     - coveralls

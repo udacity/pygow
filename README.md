@@ -59,6 +59,10 @@ The `validation` module includes the following functions:
 * `lift_aN(f)`: Returns a `Valid` of a curried representation of the
   N-arity function `f`.  Defined for `N` from `2` to `9`.
 
+## Examples
+
+See the [tests](tests/) for complete examples.
+
 ## Development
 
 To release a new version of pygow:

@@ -14,6 +14,22 @@ def divBy(x):
             return maybe.Just(y / x)
     return k
 
+def test_eq():
+  assert_true(maybe.Just(42).__eq__(maybe.Just(42)))
+  assert_false(maybe.Just(42).__eq__(maybe.Just(1)))
+  assert_true(maybe.Nothing().__eq__(maybe.Nothing()))
+  assert_false(maybe.Just(42).__eq__(maybe.Nothing()))
+
+def test_ne():
+  assert_false(maybe.Just(42).__ne__(maybe.Just(42)))
+  assert_true(maybe.Just(42).__ne__(maybe.Just(1)))
+  assert_false(maybe.Nothing().__ne__(maybe.Nothing()))
+  assert_true(maybe.Just(42).__ne__(maybe.Nothing()))
+
+def test_str():
+  assert_equals('Just(42)', str(maybe.Just(42)))
+  assert_equals('Nothing()', str(maybe.Nothing()))
+
 def test_is_just():
   assert_true(maybe.Just(42).is_just())
   assert_false(maybe.Nothing().is_just())

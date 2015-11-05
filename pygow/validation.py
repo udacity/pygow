@@ -2,6 +2,13 @@ class Valid:
     a = None
     def __init__(self, a):
         self.a = a
+    def __eq__(self, other):
+        return (isinstance(other, self.__class__)
+            and self.a == other.a)
+    def __ne__(self, other):
+        return not self.__eq__(other)
+    def __str__(self):
+        return 'Valid(%s)' % self.a
     def is_valid(self):
         return True
     def map(self, f):
@@ -18,6 +25,13 @@ class Invalid:
     es = None
     def __init__(self, es):
         self.es = es
+    def __eq__(self, other):
+        return (isinstance(other, self.__class__)
+            and self.es == other.es)
+    def __ne__(self, other):
+        return not self.__eq__(other)
+    def __str__(self):
+        return 'Invalid(%s)' % self.es
     def is_valid(self):
         return False
     def map(self, f):

@@ -67,6 +67,20 @@ See the [tests](tests/) for complete examples.
 
 To release a new version of pygow:
 
+1. Configure *~/.pypirc*:
+
+    ```
+    [server-login]
+    username: YOUR_PYPI_USERNAME
+    password: YOUR_PYPI_PASSWORD
+
+    [pypi]
+    repository: https://pypi.python.org/pypi
+
+    [pypitest]
+    repository: https://testpypi.python.org/pypi
+    ```
+
 1. Update the version number in *setup.py*
 1. Commit all changes
 1. Add a version tag to git: `git tag 0.1`

@@ -47,6 +47,7 @@ def test_get_required_env():
     assert_false(validation.get_required_env('THIS_AINT_AN_ENV_VAR').is_valid())
 
 a_v = validation.Valid('a')
+a_i = validation.Invalid(['invalid: a'])
 def test_lift_a():
     def append(a):
         return a
@@ -56,12 +57,25 @@ def test_lift_a():
     )
 
 b_v = validation.Valid('b')
+b_i = validation.Invalid(['invalid: b'])
 def test_lift_a2():
     def append_2(a, b):
         return a + b
     assert_equals(
         validation.Valid('ab'),
         validation.lift_a2(append_2).ap(a_v).ap(b_v)
+    )
+    assert_equals(
+        validation.Invalid(['invalid: a']),
+        validation.lift_a2(append_2).ap(a_i).ap(b_v)
+    )
+    assert_equals(
+        validation.Invalid(['invalid: b']),
+        validation.lift_a2(append_2).ap(a_v).ap(b_i)
+    )
+    assert_equals(
+        validation.Invalid(['invalid: a', 'invalid: b']),
+        validation.lift_a2(append_2).ap(a_i).ap(b_i)
     )
 
 c_v = validation.Valid('c')

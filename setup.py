@@ -7,5 +7,8 @@ setup(
     version='0.1',
     description='Functional data structures for Python',
     url='https://github.com/udacity/pygow',
-    py_modules=['pygow'],
+    py_modules=[
+        'pygow.maybe',
+        'pygow.validation',
+    ],
 )

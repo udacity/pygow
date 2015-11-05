@@ -53,3 +53,7 @@ def test_get_maybe_env():
 def test_non_empty_string():
   assert_true(maybe.non_empty_string('foo').is_just())
   assert_false(maybe.non_empty_string('   ').is_just())
+
+def test_parse_int():
+  assert_equals(maybe.Just(42), maybe.parse_int('42'))
+  assert_equals(maybe.Nothing(), maybe.parse_int('forty-two'))

@@ -33,6 +33,8 @@ The `maybe` module includes the following functions:
   variable
 * `non_empty_string(x)`: Returns a `Just` of the string `x` if it is
   non-empty, or `Nothing` otherwise
+* `parse_int(x)`: Returns a `Just` of the integer value of the string
+  `x`, if it is parseable, or `Nothing` otherwise
 
 **Validation**
 

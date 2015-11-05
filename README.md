@@ -1,3 +1,6 @@
+[![Circle CI](https://circleci.com/gh/udacity/pygow.svg?style=svg)](https://circleci.com/gh/udacity/pygow)
+[![Coverage Status](https://coveralls.io/repos/udacity/pygow/badge.svg?branch=master&service=github)](https://coveralls.io/github/udacity/pygow?branch=master)
+
 Functional data structures for Python.
 
 ## Usage

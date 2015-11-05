@@ -11,4 +11,6 @@ setup(
         'pygow.maybe',
         'pygow.validation',
     ],
+    author='James Earl Douglas',
+    author_email='james@earldouglas.com',
 )

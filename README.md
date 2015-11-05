@@ -6,7 +6,7 @@ Functional data structures for Python.
 ## Usage
 
 ```
-$ pip install git+git://github.com/udacity/pygow.git@0.1
+$ pip install pygow
 ```
 
 ## Features

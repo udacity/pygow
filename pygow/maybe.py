@@ -47,3 +47,9 @@ def non_empty_string(x):
         return Nothing()
     else:
         return Just(x)
+
+def parse_int(x):
+    try:
+        return Just(int(x))
+    except:
+        return Nothing()

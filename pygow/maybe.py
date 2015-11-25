@@ -17,6 +17,8 @@ class Just:
         return f(self.a)
     def get_or_else(self, x):
         return self.a
+    def or_else(self, x):
+        return self
 
 class Nothing:
     def __eq__(self, other):
@@ -32,6 +34,8 @@ class Nothing:
     def flat_map(self, f):
         return Nothing()
     def get_or_else(self, x):
+        return x
+    def or_else(self, x):
         return x
 
 def get_maybe_env(name):
@@ -53,3 +57,9 @@ def parse_int(x):
         return Just(int(x))
     except:
         return Nothing()
+
+def maybe(x):
+    if x is None:
+        return Nothing()
+    else:
+        return Just(x)

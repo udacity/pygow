@@ -26,6 +26,8 @@ A `Maybe` instance includes the following methods:
   any, and returns the resulting `Maybe` instance
 * `get_or_else(x)`: Returns the underlying value `a`, if any, otherwise
   returns the parameter `x`
+* `or_else(x)`: Returns this `Maybe` instance if it is a `Just`,
+  otherwise returns the parameter `x`
 
 The `maybe` module includes the following functions:
 
@@ -35,6 +37,8 @@ The `maybe` module includes the following functions:
   non-empty, or `Nothing` otherwise
 * `parse_int(x)`: Returns a `Just` of the integer value of the string
   `x`, if it is parseable, or `Nothing` otherwise
+* `maybe(x)`: Constructs a `Maybe` instance around the parameter `x`,
+  returning `Just` if `x` is not `None`, and `Nothing` otherwise
 
 **Validation**
 

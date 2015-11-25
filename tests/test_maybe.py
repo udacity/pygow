@@ -57,3 +57,11 @@ def test_non_empty_string():
 def test_parse_int():
   assert_equals(maybe.Just(42), maybe.parse_int('42'))
   assert_equals(maybe.Nothing(), maybe.parse_int('forty-two'))
+
+def test_maybe():
+  assert_true(maybe.maybe(None).__eq__(maybe.Nothing()))
+  assert_true(maybe.maybe(42).__eq__(maybe.Just(42)))
+
+def test_or_else():
+  assert_true(maybe.Just(42).__eq__(maybe.Just(42).or_else(maybe.Just(1))))
+  assert_true(maybe.Just(1).__eq__(maybe.Nothing().or_else(maybe.Just(1))))

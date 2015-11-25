@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='pygow',
-    version='0.2',
+    version='0.3',
     description='Functional data structures for Python',
     url='https://github.com/udacity/pygow',
     py_modules=[

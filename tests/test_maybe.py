@@ -61,3 +61,7 @@ def test_parse_int():
 def test_maybe():
   assert_true(maybe.maybe(None).__eq__(maybe.Nothing()))
   assert_true(maybe.maybe(42).__eq__(maybe.Just(42)))
+
+def test_or_else():
+  assert_true(maybe.Just(42).__eq__(maybe.Just(42).or_else(maybe.Just(1))))
+  assert_true(maybe.Just(1).__eq__(maybe.Nothing().or_else(maybe.Just(1))))

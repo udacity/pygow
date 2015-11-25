@@ -15,6 +15,8 @@ class Just:
         return Just(f(self.a))
     def flat_map(self, f):
         return f(self.a)
+    def or_else(self, x):
+        return self
     def get_or_else(self, x):
         return self.a
 
@@ -31,6 +33,8 @@ class Nothing:
         return Nothing()
     def flat_map(self, f):
         return Nothing()
+    def or_else(self, x):
+        return self
     def get_or_else(self, x):
         return x
 

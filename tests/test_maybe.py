@@ -60,3 +60,4 @@ def test_parse_int():
 
 def test_maybe():
   assert_true(maybe.maybe(None).__eq__(maybe.Nothing()))
+  assert_true(maybe.maybe(42).__eq__(maybe.Just(42)))

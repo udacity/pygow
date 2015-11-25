@@ -53,3 +53,9 @@ def parse_int(x):
         return Just(int(x))
     except:
         return Nothing()
+
+def maybe(x):
+    if x is None:
+        return Nothing()
+    else:
+        return Just(x)

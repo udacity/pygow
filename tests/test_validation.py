@@ -105,3 +105,11 @@ def test_lift_a9():
                                         ap(a_v).ap(b_v).ap(c_v).
                                         ap(a_v).ap(b_v).ap(c_v)
     )
+
+def test_lift_a0():
+    def append(a):
+        return a
+    assert_equals(
+        validation.Invalid(["n must be positive in lift_aN(n, f)"]),
+        validation.lift_aN(0, append).ap(a_v)
+    )

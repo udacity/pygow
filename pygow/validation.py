@@ -52,27 +52,26 @@ def get_required_env(name):
     else:
         return Valid(value)
 
-def curry(arity, f, acc = []):
-    if arity == 1:
-        def g(x):
-            args = []
-            args.extend(acc)
-            args.append(x)
-            return f(*args)
-        return g
-    elif arity > 1:
-        def g(x):
-            args = []
-            args.extend(acc)
-            args.append(x)
-            return curry(arity - 1, f, args)
-        return g
-        return None
+def lift_aN(arity, f):
+    def curry(arity, f, acc = []):
+        if arity == 1:
+            def g(x):
+                args = []
+                args.extend(acc)
+                args.append(x)
+                return f(*args)
+            return g
+        else:
+            def g(x):
+                args = []
+                args.extend(acc)
+                args.append(x)
+                return curry(arity - 1, f, args)
+            return g
+    if arity >= 1:
+        return Valid(curry(arity, f))
     else:
         return Invalid(["n must be positive in lift_aN(n, f)"])
-    
-def lift_aN(arity, f):
-    return Valid(curry(arity, f))
 
 def lift_a(f):
     return lift_aN(1, f)

@@ -87,56 +87,21 @@ def test_lift_a3():
         validation.lift_a3(append_3).ap(a_v).ap(b_v).ap(c_v)
     )
 
-d_v = validation.Valid('d')
 def test_lift_a4():
     def append_4(a, b, c, d):
         return a + b + c + d
     assert_equals(
-        validation.Valid('abcd'),
-        validation.lift_a4(append_4).ap(a_v).ap(b_v).ap(c_v).ap(d_v)
+        validation.Valid('abca'),
+        validation.lift_aN(4, append_4).ap(a_v).ap(b_v).ap(c_v).
+                                        ap(a_v)
     )
 
-e_v = validation.Valid('e')
-def test_lift_a5():
-    def append_5(a, b, c, d, e):
-        return a + b + c + d + e
-    assert_equals(
-        validation.Valid('abcde'),
-        validation.lift_a5(append_5).ap(a_v).ap(b_v).ap(c_v).ap(d_v).ap(e_v)
-    )
-
-f_v = validation.Valid('f')
-def test_lift_a6():
-    def append_6(a, b, c, d, e, f):
-        return a + b + c + d + e + f
-    assert_equals(
-        validation.Valid('abcdef'),
-        validation.lift_a6(append_6).ap(a_v).ap(b_v).ap(c_v).ap(d_v).ap(e_v).ap(f_v)
-    )
-
-g_v = validation.Valid('g')
-def test_lift_a7():
-    def append_7(a, b, c, d, e, f, g):
-        return a + b + c + d + e + f + g
-    assert_equals(
-        validation.Valid('abcdefg'),
-        validation.lift_a7(append_7).ap(a_v).ap(b_v).ap(c_v).ap(d_v).ap(e_v).ap(f_v).ap(g_v)
-    )
-
-h_v = validation.Valid('h')
-def test_lift_a8():
-    def append_8(a, b, c, d, e, f, g, h):
-        return a + b + c + d + e + f + g + h
-    assert_equals(
-        validation.Valid('abcdefgh'),
-        validation.lift_a8(append_8).ap(a_v).ap(b_v).ap(c_v).ap(d_v).ap(e_v).ap(f_v).ap(g_v).ap(h_v)
-    )
-
-i_v = validation.Valid('i')
 def test_lift_a9():
     def append_9(a, b, c, d, e, f, g, h, i):
         return a + b + c + d + e + f + g + h + i
     assert_equals(
-        validation.Valid('abcdefghi'),
-        validation.lift_a9(append_9).ap(a_v).ap(b_v).ap(c_v).ap(d_v).ap(e_v).ap(f_v).ap(g_v).ap(h_v).ap(i_v)
+        validation.Valid('abcabcabc'),
+        validation.lift_aN(9, append_9).ap(a_v).ap(b_v).ap(c_v).
+                                        ap(a_v).ap(b_v).ap(c_v).
+                                        ap(a_v).ap(b_v).ap(c_v)
     )

@@ -46,13 +46,13 @@ A `Validation` represents the result of a validation operation.  It can
 be either `Valid(a)` for some value `a`, or `Invalid(es)` for some list
 of errors `es`.
 
-A `Valiation` instance includes the folling methods:
+A `Validation` instance includes the following methods:
 
 * `is_valid()`: Returns true if this is a `Valid`, or false if it is an
   `Invalid`
 * `map(f)`: Applies the function `f` to the underlying value `a`, if
   any, and returns a new `Validation` containing it
-* `flat_map(f)`: Applies the funciton `f` to the underlying value `a`,
+* `flat_map(f)`: Applies the function `f` to the underlying value `a`,
   if any, and returns the resulting `Validation`
 * `ap(v)`: Applies the underlying value `a`, which must be a function,
   to the value `v`, and returns the resulting `Validation`

@@ -52,119 +52,32 @@ def get_required_env(name):
     else:
         return Valid(value)
 
+def lift_aN(arity, f):
+    def curry(arity, f, acc = []):
+        if arity == 1:
+            def g(x):
+                args = []
+                args.extend(acc)
+                args.append(x)
+                return f(*args)
+            return g
+        else:
+            def g(x):
+                args = []
+                args.extend(acc)
+                args.append(x)
+                return curry(arity - 1, f, args)
+            return g
+    if arity >= 1:
+        return Valid(curry(arity, f))
+    else:
+        return Invalid(["n must be positive in lift_aN(n, f)"])
+
 def lift_a(f):
-    return Valid(f)
+    return lift_aN(1, f)
 
 def lift_a2(f):
-    def f1(x1):
-        def f2(x2):
-            return f(x1, x2)
-        return f2
-    return Valid(f1)
+    return lift_aN(2, f)
 
 def lift_a3(f):
-    def f1(x1):
-        def f2(x2):
-            def f3(x3):
-                return f(x1, x2, x3)
-            return f3
-        return f2
-    return Valid(f1)
-
-def lift_a4(f):
-    def f1(x1):
-        def f2(x2):
-            def f3(x3):
-                def f4(x4):
-                    return f(x1, x2, x3, x4)
-                return f4
-            return f3
-        return f2
-    return Valid(f1)
-
-def lift_a5(f):
-    def f1(x1):
-        def f2(x2):
-            def f3(x3):
-                def f4(x4):
-                    def f5(x5):
-                        return f(x1, x2, x3, x4, x5)
-                    return f5
-                return f4
-            return f3
-        return f2
-    return Valid(f1)
-
-def lift_a6(f):
-    def f1(x1):
-        def f2(x2):
-            def f3(x3):
-                def f4(x4):
-                    def f5(x5):
-                        def f6(x6):
-                            return f(x1, x2, x3, x4, x5, x6)
-                        return f6
-                    return f5
-                return f4
-            return f3
-        return f2
-    return Valid(f1)
-
-def lift_a7(f):
-    def f1(x1):
-        def f2(x2):
-            def f3(x3):
-                def f4(x4):
-                    def f5(x5):
-                        def f6(x6):
-                            def f7(x7):
-                                return f(x1, x2, x3, x4, x5, x6, x7)
-                            return f7
-                        return f6
-                    return f5
-                return f4
-            return f3
-        return f2
-    return Valid(f1)
-
-def lift_a8(f):
-    def f1(x1):
-        def f2(x2):
-            def f3(x3):
-                def f4(x4):
-                    def f5(x5):
-                        def f6(x6):
-                            def f7(x7):
-                                def f8(x8):
-                                    return f(x1, x2, x3, x4, x5, x6, x7,
-                                             x8)
-                                return f8
-                            return f7
-                        return f6
-                    return f5
-                return f4
-            return f3
-        return f2
-    return Valid(f1)
-
-def lift_a9(f):
-    def f1(x1):
-        def f2(x2):
-            def f3(x3):
-                def f4(x4):
-                    def f5(x5):
-                        def f6(x6):
-                            def f7(x7):
-                                def f8(x8):
-                                    def f9(x9):
-                                        return f(x1, x2, x3, x4, x5, x6,
-                                                 x7, x8, x9)
-                                    return f9
-                                return f8
-                            return f7
-                        return f6
-                    return f5
-                return f4
-            return f3
-        return f2
-    return Valid(f1)
+    return lift_aN(3, f)

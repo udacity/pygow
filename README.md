@@ -62,8 +62,8 @@ The `validation` module includes the following functions:
 * `get_required_env(name)`: Returns a `Validation` of the named
   environment variable
 * `lift_a(f)`: Returns a `Valid` of the unary function `f`
-* `lift_aN(f)`: Returns a `Valid` of a curried representation of the
-  N-arity function `f`.  Defined for `N` from `2` to `9`.
+* `lift_aN(n, f)`: Returns a `Valid` of a curried representation of the
+  N-arity function `f`.
 
 ## Examples
 

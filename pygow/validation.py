@@ -1,3 +1,5 @@
+import maybe
+
 class Valid:
     a = None
     def __init__(self, a):
@@ -20,6 +22,8 @@ class Valid:
             return Valid(self.a(v.a))
         else:
             return v
+    def to_maybe(self):
+        return maybe.Just(self.a)
 
 class Invalid:
     es = None
@@ -43,6 +47,8 @@ class Invalid:
             return self
         else:
             return Invalid(self.es + v.es)
+    def to_maybe(self):
+        return maybe.Nothing()
 
 def get_required_env(name):
     from os import getenv

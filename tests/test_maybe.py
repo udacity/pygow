@@ -1,5 +1,5 @@
 from nose.tools import assert_true, assert_false, assert_equals
-from pygow import maybe
+from pygow import maybe, validation
 
 def multBy(x):
     def k(y):
@@ -65,3 +65,7 @@ def test_maybe():
 def test_or_else():
   assert_true(maybe.Just(42).__eq__(maybe.Just(42).or_else(maybe.Just(1))))
   assert_true(maybe.Just(1).__eq__(maybe.Nothing().or_else(maybe.Just(1))))
+
+def test_to_validation():
+  assert_equals(validation.Valid(42), maybe.Just(42).to_validation('nope'))
+  assert_equals(validation.Invalid(['nope']), maybe.Nothing().to_validation('nope'))

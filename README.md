@@ -6,7 +6,7 @@ Functional data structures for Python.
 ## Usage
 
 ```
-$ pip install pygow==0.4
+$ pip install pygow==0.5
 ```
 
 ## Features

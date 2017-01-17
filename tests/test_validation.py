@@ -1,5 +1,5 @@
 from nose.tools import assert_true, assert_false, assert_equals
-from pygow import validation
+from pygow import validation, maybe
 
 def multBy(x):
     def k(y):
@@ -45,6 +45,10 @@ def test_flat_map():
 def test_get_required_env():
     assert_true(validation.get_required_env('HOME').is_valid())
     assert_false(validation.get_required_env('THIS_AINT_AN_ENV_VAR').is_valid())
+
+def test_to_maybe():
+  assert_equals(maybe.Just(42), validation.Valid(42).to_maybe())
+  assert_equals(maybe.Nothing(), validation.Invalid(['nope']).to_maybe())
 
 a_v = validation.Valid('a')
 a_i = validation.Invalid(['invalid: a'])

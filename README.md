@@ -56,6 +56,8 @@ A `Validation` instance includes the following methods:
   if any, and returns the resulting `Validation`
 * `ap(v)`: Applies the underlying value `a`, which must be a function,
   to the value `v`, and returns the resulting `Validation`
+* `to_maybe()`: Returns a `Just(a)` if this is a `Valid(a)`, and a
+  `Nothing` if this is an `Invalid(es)`
 
 The `validation` module includes the following functions:
 

@@ -1,3 +1,5 @@
+import validation
+
 class Just:
     a = None
     def __init__(self, a):
@@ -19,6 +21,8 @@ class Just:
         return self.a
     def or_else(self, x):
         return self
+    def to_validation(self, e):
+        return validation.Valid(self.a)
 
 class Nothing:
     def __eq__(self, other):
@@ -37,6 +41,8 @@ class Nothing:
         return x
     def or_else(self, x):
         return x
+    def to_validation(self, e):
+        return validation.Invalid([e])
 
 def get_maybe_env(name):
     from os import getenv

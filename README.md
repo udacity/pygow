@@ -28,6 +28,8 @@ A `Maybe` instance includes the following methods:
   returns the parameter `x`
 * `or_else(x)`: Returns this `Maybe` instance if it is a `Just`,
   otherwise returns the parameter `x`
+* `to_validation(e)`: Returns a `Valid(a)` if this is a `Just(a)`, or
+  `Invalid([e])` if this is a `Nothing`
 
 The `maybe` module includes the following functions:
 
